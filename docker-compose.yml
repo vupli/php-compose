@@ -1,0 +1,46 @@
+version: "3.9"
+
+networks:
+    dbnetwork:
+        driver: bridge
+
+volumes:
+  mariadb:
+    driver: local
+
+
+services:
+  php-custom-app:
+    build: .
+    expose:
+        - "8081"
+    ports:
+      - "8081:80"
+  mariadb:
+    image: mariadb:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: YOUR_ROOT_PASSWORD_HERE
+      MYSQL_USER:  YOUR_MYSQL_USER_HERE 
+      MYSQL_PASSWORD: YOUR_USER_PW_HERE
+    expose:
+        - "8082"
+    ports:
+        - "8082:3306"
+    volumes:
+     - mariadb:/var/lib/mysql
+    networks:
+      dbnetwork:
+              
+  phpmyadmin:
+    image: phpmyadmin:latest
+    restart: always
+    expose:
+      - "8083"
+    ports:
+      - "8083:80"
+    environment:
+      - PMA_HOST=mariadb
+      - PMA_PORT=3306 
+    networks:
+      dbnetwork:
