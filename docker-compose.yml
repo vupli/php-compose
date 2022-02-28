@@ -13,9 +13,9 @@ services:
   php-custom-app:
     build: .
     expose:
-        - "8081"
+        - "80"
     ports:
-      - "8081:80"
+      - "80:80"
   mariadb:
     image: mariadb:latest
     restart: always
@@ -36,9 +36,9 @@ services:
     image: phpmyadmin:latest
     restart: always
     expose:
-      - "8083"
+      - "8765"
     ports:
-      - "8083:80"
+      - "8765:80"
     environment:
       - PMA_HOST=mariadb
       - PMA_PORT=3306 
