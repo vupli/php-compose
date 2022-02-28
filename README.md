@@ -8,8 +8,8 @@
 MariaDB и phpMyAdmin находятся в одной сети, успешно получается войти в базу через phpMyAdmin.
 Пароль находится в compose. Можно было через переменные сделать или секреты, но мне лень.
 
-Приложение http://localhost:8081/hello.php
+Приложение http://localhost/hello.php
 
 База весит на порту 8082
 
-PhpMyAdmin http://localhost:8083/index.php
+PhpMyAdmin http://localhost:8765/index.php
